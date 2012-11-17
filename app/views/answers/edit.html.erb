@@ -1,10 +1,10 @@
 <h2>Editing answer</h2>
 
 <%= render :partial => "form", 
-					 :locals => { 
-					 		:answer_form_options => {
-					 			:url => question_answer_path(@question, @answer)
-					 		}
-					 	} %>
+           :locals => { 
+              :answer_form_options => {
+                :url => question_answer_path(@question, @answer)
+              }
+            } %>
 
 <%= link_to 'Show Question', question_path(@question) %>

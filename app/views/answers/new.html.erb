@@ -1,10 +1,10 @@
 <h2>New answer</h2>
 
 <%= render :partial => "answers/form", 
-					 :locals => { 
-					 		:answer_form_options => {
-					 			:url => question_answers_path(@question)
-					 		}
-					 	} %>
+           :locals => { 
+              :answer_form_options => {
+                :url => question_answers_path(@question)
+              }
+            } %>
 
 <%= link_to 'Back', question_path(@question) %>
