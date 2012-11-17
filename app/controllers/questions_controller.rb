@@ -53,6 +53,7 @@ class QuestionsController < ApplicationController
     end
 
     @question = @current_user.questions.build(params[:question])
+    @question.user_id = @current_user.id
 
     respond_to do |format|
       if @question.save
