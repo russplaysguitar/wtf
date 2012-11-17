@@ -7,7 +7,7 @@ Wtf::Application.routes.draw do
                              :show]
 
   resources :questions do
-    resources :answers do
+    resources :answers, :except => [:index] do
       resources :comments
     end
     resources :comments
