@@ -15,12 +15,17 @@ ActiveRecord::Schema.define(:version => 20121117070435) do
 
   create_table "answers", :force => true do |t|
     t.string   "description"
+    t.integer  "user_id"
+    t.integer  "question_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|
     t.string   "description"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -28,13 +33,16 @@ ActiveRecord::Schema.define(:version => 20121117070435) do
   create_table "questions", :force => true do |t|
     t.string   "title"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "taggings", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "question_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "tags", :force => true do |t|
