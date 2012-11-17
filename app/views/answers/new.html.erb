@@ -1,8 +1,8 @@
 <h1>New answer</h1>
 
-<%= render :partial => "form", 
+<%= render :partial => "answers/form", 
 					 :locals => { 
-					 		:form_options => {
+					 		:answer_form_options => {
 					 			:url => question_answers_path(@question)
 					 		}
 					 	} %>

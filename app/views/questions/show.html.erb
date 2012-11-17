@@ -18,6 +18,7 @@
 	<br />
 <% end %>
 
+
 <% if @current_user %>
-	<%= link_to 'Post Answer', new_question_answer_path(@question) %>
+	<%= render :template => 'answers/new' %>
 <% end %>
