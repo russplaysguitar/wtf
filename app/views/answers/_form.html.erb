@@ -1,4 +1,6 @@
 <%= form_for(@answer) do |f| %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+
   <% if @answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
