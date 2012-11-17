@@ -1,6 +1,5 @@
 Wtf::Application.routes.draw do
-  resources :users, :except => [:index,
-                                :new, 
+  resources :users, :except => [:new, 
                                 :destroy]
 
   resources :tags, :only => [:index,
