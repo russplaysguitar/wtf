@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :question
-	belongs_to :comment
+	belongs_to :answer
 	has_many :votes
   attr_accessible :description
 end
