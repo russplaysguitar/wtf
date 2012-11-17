@@ -1,13 +1,16 @@
 Wtf::Application.routes.draw do
-  resources :comments
-
-  resources :users
+  resources :users, :except => [:index,
+                                :new, 
+                                :destroy]
 
   resources :tags
 
-  resources :answers
-
-  resources :questions
+  resources :questions do
+    resources :answers do
+      resources :comments
+    end
+    resources :comments
+  end
 
   root :to => 'questions#index'
   # The priority is based upon order of creation:
