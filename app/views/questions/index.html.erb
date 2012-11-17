@@ -23,7 +23,7 @@
 <br />
 
 <% if !@current_user %>
-  <%= link_to 'Sign in', '/login' %>
+  <%= link_to 'Sign in', '/login' %> or <%= link_to 'Sign up', '/signup' %>
 <% else %>
   <%= link_to 'New Question', new_question_path %><br /><br />
   <%= link_to "Sign out", "/logout", :id => @current_user.id, :method => :delete %>
