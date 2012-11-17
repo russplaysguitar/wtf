@@ -60,8 +60,8 @@ class AnswersController < ApplicationController
     end
   end
 
-  # PUT /questions/1//answers/1
-  # PUT /questions/1//answers/1.json
+  # PUT /questions/1/answers/1
+  # PUT /questions/1/answers/1.json
   def update
     @question = Question.find(params[:question_id])
 
@@ -82,8 +82,8 @@ class AnswersController < ApplicationController
     end
   end
 
-  # DELETE /questions/1//answers/1
-  # DELETE /questions/1//answers/1.json
+  # DELETE /questions/1/answers/1
+  # DELETE /questions/1/answers/1.json
   def destroy
     @question = Question.find(params[:question_id])
 
