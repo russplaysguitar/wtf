@@ -19,6 +19,12 @@ class AnswersController < ApplicationController
   # GET /questions/1/answers/new
   # GET /questions/1/answers/new.json
   def new
+    @question = Question.find(params[:question_id])
+
+    if !@question
+      redirect_to :controller => :questions, :action => "show", :id => params[:question_id]
+    end
+
     @answer = Answer.new
 
     respond_to do |format|
@@ -51,8 +57,8 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render json: @answer, status: :created, location: @answer }
+        format.html { redirect_to @question, notice: 'Answer was successfully created.' }
+        format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
@@ -73,7 +79,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to @question, notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -96,7 +102,7 @@ class AnswersController < ApplicationController
     @answer.destroy
 
     respond_to do |format|
-      format.html { redirect_to answers_url }
+      format.html { redirect_to @question }
       format.json { head :no_content }
     end
   end
