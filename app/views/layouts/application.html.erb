@@ -14,7 +14,7 @@ Questions and Answers<br />
 <% if !@current_user %>
   <%= link_to 'Sign in', '/login' %> or <%= link_to 'Sign up', '/signup' %>
 <% else %>
-  <%= link_to "Sign out", "/logout", :id => @current_user.id, :method => :delete %>
+  Hi, <%= link_to @current_user.username, user_path(@current_user) %> | <%= link_to "Sign out", "/logout", :id => @current_user.id, :method => :delete %>
 <% end %>
 
 <hr />
