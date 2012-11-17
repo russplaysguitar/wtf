@@ -3,14 +3,19 @@ Wtf::Application.routes.draw do
                                 :new, 
                                 :destroy]
 
-  resources :tags
+  resources :tags, :only => [:index,
+                             :show]
 
   resources :questions do
     resources :answers do
       resources :comments
     end
     resources :comments
+    resources :taggings, :only => [:create, 
+                                   :destroy]
   end
+
+  match 'signup'  => "users#new"
 
   match 'login'    => "sessions#new"
   match 'sessions' => "sessions#create",  :via => :post
