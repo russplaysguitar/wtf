@@ -3,5 +3,6 @@ class Question < ActiveRecord::Base
 	has_many :answers
 	has_many :comments
 	has_many :tags, :through => :taggings
+	has_many :votes
   attr_accessible :description, :title
 end
