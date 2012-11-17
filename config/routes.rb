@@ -12,6 +12,10 @@ Wtf::Application.routes.draw do
     resources :comments
   end
 
+  match 'login'    => "sessions#new"
+  match 'sessions' => "sessions#create",  :via => :post
+  match 'logout'   => "sessions#destroy", :via => :delete
+
   root :to => 'questions#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
