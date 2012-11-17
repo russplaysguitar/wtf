@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Question</h2>
 <p>
   <b>Title:</b>
   <%= @question.title %>
@@ -10,6 +11,15 @@
   <%= @question.description %>
 </p>
 
-
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+
+<hr />
+
+<h3>Answers</h3>
+<% @question.answers.each do |a| %>
+	<%= a.description %><br />
+<% end %>
+
+<%= link_to 'Post Answer', new_question_answer_path(@question) %><br />
+<br />
