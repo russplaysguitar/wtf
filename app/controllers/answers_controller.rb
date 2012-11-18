@@ -78,6 +78,8 @@ class AnswersController < ApplicationController
 
     @answer = @question.answers.find(params[:id])
 
+    # TODO: write something that makes other answers not right if this one is marked as right
+
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to @question, notice: 'Answer was successfully updated.' }
