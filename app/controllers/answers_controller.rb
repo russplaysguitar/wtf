@@ -82,7 +82,16 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
-        format.html { redirect_to @question, notice: 'Answer was successfully updated.' }
+        # make other answers wrong
+        if params[:answer][:is_right]
+          @question.answers.each do |a|
+            if a != @answer
+              a.is_right = false
+              a.save
+            end
+          end
+        end
+        format.html { render :controller => @question, :action => "show", notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

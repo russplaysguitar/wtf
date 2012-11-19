@@ -14,11 +14,23 @@
   <%= a.description %><br />
   By: <%= link_to a.user.username, user_path(a.user) %><br />
   <% if is_current_user(@question.user) %>
-    <%= link_to 'Mark as Answer' %><br /><!-- TODO: make this link work -->
+    <%= link_to 'Is right?', 
+        question_answer_path(@question, a, :answer => {:is_right => true}, :format => "json"), 
+        :method => :put,
+        :remote => :true, 
+        :class => "answer_is_right",
+        :right => a.is_right %><br />
   <% end %> 
   <br />
 <% end %>
-
+  <%= javascript_tag do %>
+    $(".answer_is_right").bind("ajax:complete", function(et, e, s){
+      if(s == "success") {
+        $(".answer_is_right").attr('right', false);
+        $(this).attr('right', true);
+      }
+    });
+  <% end %>
 
 <% if @current_user %>
   <%= render :template => 'answers/new' %>
