@@ -10,20 +10,26 @@
 </p>
 
 <h3>Answers</h3>
-<% @question.answers.each do |a| %>
-  <a id="<%= a.id %>"></a>
-  <%= a.description %><br />
-  By: <%= link_to a.user.username, user_path(a.user) %><br />
-  <% if is_current_user(@question.user) %>
-    <%= link_to 'Is right?', 
-        question_answer_path(@question, a, :answer => {:is_right => true}, :format => "json"), 
-        :method => :put,
-        :remote => :true, 
-        :class => "answer_is_right",
-        :right => a.is_right %><br />
-  <% end %> 
-  <br />
-<% end %>
+<ul>
+  <% @question.answers.each do |a| %>
+    <li>
+      <a id="<%= a.id %>"></a>
+      <%= a.description %><br />
+      By: <%= link_to a.user.username, user_path(a.user) %><br />
+      <% if is_current_user(@question.user) %>
+        <%= link_to 'Is right?', 
+            question_answer_path(@question, a, :answer => {:is_right => true}, :format => "json"), 
+            :method => :put,
+            :remote => :true, 
+            :class => "answer_is_right",
+            :right => a.is_right %><br />
+      <% else %>
+        <span class="answer_is_right" right="<%= a.is_right %>">Is right?</span>
+      <% end %> 
+    </li>
+  <% end %>
+</ul>
+
   <%= javascript_tag do %>
     $(".answer_is_right").bind("ajax:complete", function(et, e, s){
       if(s == "success") {

@@ -1,14 +1,14 @@
 <h1>Questions</h1>
 
-<table>
-<% @questions.each do |question| %>
-  <tr>
-    <td><%= link_to question.title, question %></td>
-  </tr>
-<% end %>
-</table>
+<ul>
+  <% @questions.each do |question| %>
+    <li><%= link_to question.title, question %></li>
+  <% end %>
+</ul>
 
 <br />
 <% if @current_user %>
   <%= link_to 'Ask a Question', new_question_path %>
+<% else %>
+  <%= link_to 'Sign up to ask a question', '/signup' %>
 <% end %>
