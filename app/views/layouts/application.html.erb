@@ -12,6 +12,9 @@
     <div class="navbar-inner">
       <div class="container">
         <%= link_to 'wtf', root_path, :class => "brand" %>
+        <form action="/questions/search" method="get" class="navbar-search pull-left">
+          <input name="q" type="text" class="search-query" placeholder="Search">
+        </form>
         <div id="main-menu">
           <ul id="main-menu-left" class="nav">
             <li><%= link_to 'Questions', questions_path %></li>

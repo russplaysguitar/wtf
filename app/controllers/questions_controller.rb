@@ -22,6 +22,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def search
+    q = params[:q].upcase!
+    questions = Question.where("upper(title) LIKE '%"+q+"%' OR upper(description) LIKE '%"+q+"%'")
+    answers = Answer.where("upper(description) LIKE '%"+q+"%'")
+    @questions = questions + answers.map {|a| a.question}
+    @questions.uniq!
+  end
+
   # GET /questions/new
   # GET /questions/new.json
   def new
