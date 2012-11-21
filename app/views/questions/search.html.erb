@@ -1,5 +1,13 @@
 <h1>Search</h1>
 
-<% @questions.each do |q| %>
-  <%= q %>
+<% if @questions.length == 0 %>
+  No matches found-- bummer!
+<% else %>
+  <h2>Results for: "<%=params[:q] %>"</h2>
 <% end %>
+
+<ul>
+  <% @questions.each do |q| %>
+    <li><%= link_to q.title, q %></li>
+  <% end %>
+</ul>
