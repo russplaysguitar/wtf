@@ -10,5 +10,5 @@
 <% if @current_user %>
   <%= link_to 'Ask a Question', new_question_path %>
 <% else %>
-  <%= link_to 'Sign up to ask a question', '/signup' %>
+  <%= link_to 'Log in', '/login' %> or <%= link_to 'Sign up', '/signup' %> to ask a question.
 <% end %>
