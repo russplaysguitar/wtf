@@ -1,9 +1,22 @@
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
+<h1><%= @user.username %></h1>
+
+<h2>Questions</h2>
+<ul>
+  <% @user.questions.each do |q| %>
+    <li><%= link_to q.title, q %></li>
+  <% end %>
+</ul>
+
+<h2>Answers</h2>
+<ul>
+  <% @user.answers.each do |a| %>
+    <li><%= link_to a.question.title, question_path(a.question, :anchor => a.id) %></li>
+  <% end %>
+</ul>
 
 <% if is_current_user(@user) %>
   <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -11,6 +11,7 @@
 
 <h3>Answers</h3>
 <% @question.answers.each do |a| %>
+  <a id="<%= a.id %>"></a>
   <%= a.description %><br />
   By: <%= link_to a.user.username, user_path(a.user) %><br />
   <% if is_current_user(@question.user) %>
