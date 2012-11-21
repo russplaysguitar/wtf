@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @question.title %></h2>
+<h1><%= @question.title %></h1>
 <p>
   <%= @question.description %><br />
   By: <%= link_to @question.user.username, user_path(@question.user) %><br />
