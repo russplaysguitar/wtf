@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20121117070435) do
     t.string   "description"
     t.integer  "user_id"
     t.integer  "question_id"
-    t.boolean  "is_right"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "is_right",    :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "comments", :force => true do |t|
