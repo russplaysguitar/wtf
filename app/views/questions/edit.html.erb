@@ -1,6 +1,14 @@
 <h1>Editing question</h1>
 
-<%= render 'form' %>
+<%= render :partial => "questions/form", 
+           :locals => { 
+              :form_options => {
+                :html => {
+                  :class => "form-horizontal well"
+                }
+              }
+            } %>
+
 
 <%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %><br />
 <br />

@@ -1,3 +1,10 @@
 <h1>New question</h1>
 
-<%= render 'form' %>
+<%= render :partial => "questions/form", 
+           :locals => { 
+              :form_options => {
+                :html => {
+                  :class => "form-horizontal well"
+                }
+              }
+            } %>
