@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a.answer_is_right[right="true"] {
-  background-color: #71C671;
+.answer_is_right {
+  background-color: none;
 }
 
-a.answer_is_right[right="false"] {
-  background-color: none;
+.answer_is_right[right="true"] {
+  background-color: #71C671;
 }
