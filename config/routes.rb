@@ -14,7 +14,7 @@ Wtf::Application.routes.draw do
                                    :destroy]
   end
 
-  match 'signup'  => "users#new"
+  match 'signup'   => "users#new"
 
   match 'login'    => "sessions#new"
   match 'sessions' => "sessions#create",  :via => :post
