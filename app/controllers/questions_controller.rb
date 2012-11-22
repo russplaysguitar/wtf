@@ -23,9 +23,9 @@ class QuestionsController < ApplicationController
   end
 
   def search
-    q = params[:q].upcase!
-    questions = Question.where("upper(title) LIKE '%"+q+"%' OR upper(description) LIKE '%"+q+"%'")
-    answers = Answer.where("upper(description) LIKE '%"+q+"%'")
+    q = params[:q].upcase
+    questions = Question.where("upper(title) LIKE '%"+q.to_s+"%' OR upper(description) LIKE '%"+q.to_s+"%'")
+    answers = Answer.where("upper(description) LIKE '%"+q.to_s+"%'")
     @questions = questions + answers.map {|a| a.question}
     @questions.uniq!
   end
