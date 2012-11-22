@@ -43,4 +43,6 @@
 
 <% if @current_user %>
   <%= render :template => 'answers/new' %>
+<% else %>
+  <%= link_to 'Log in', '/login' %> or <%= link_to 'Sign up', '/signup' %> to answer this question.
 <% end %>
