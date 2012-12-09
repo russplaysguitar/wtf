@@ -2,8 +2,8 @@
 <h1>Log In to WTF</h1>
 <h3><%= flash[:now] %></h3>
 <p>Use the form below to log in to WTF</p>
-<%= form_for :session, :url => "sessions" do |f| %>
+<%= form_for :session, :url => "sessions", :html => { :class => "form-inline" } do |f| %>
   <%= f.text_field :username, :placeholder => "User Name" %>
   <%= f.password_field :password, :placeholder => "Password" %>
-  <%= f.submit "Login" %>
+  <%= f.submit "Login", :class => "btn btn-primary" %>
 <% end %>

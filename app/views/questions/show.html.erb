@@ -7,7 +7,7 @@
   <%= @question.description.html_safe %><br />
   By: <%= link_to @question.user.username, user_path(@question.user) %><br />
   <% if is_current_user(@question.user) %>
-    <%= link_to 'Edit', edit_question_path(@question) %>
+    <%= link_to 'Edit', edit_question_path(@question), :class => "btn btn-warning" %>
   <% end %>
 </p>
 
@@ -68,14 +68,14 @@
   <li>
     <%= link_to tag.name, tag_path(tag), :class => "badge badge-inverse" %>
     <% if @current_user == @question.user %>
-      <%= link_to "x", question_tagging_path(@question, @question.taggings.where(:tag_id => tag.id)[0].id), :method => :delete, :confirm => "Really?" %>
+      <%= link_to "", question_tagging_path(@question, @question.taggings.where(:tag_id => tag.id)[0].id), :method => :delete, :confirm => "Really?", :class => "icon-remove icon-white" %>
     <% end %>
   </li>
 <% end %> 
 </ul>
 <%= form_for :tag, :url => question_taggings_path(@question) do |f| %>
   <%= f.text_field :name, :placeholder => "Name" %>
-  <%= f.submit "Add Tag" %>
+  <%= f.submit "Add Tag", :class => "btn btn-primary" %>
 <% end %>
 </div>
 
