@@ -1,15 +1,7 @@
-<h1>Listing tags</h1>
+<h3>All Tags</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-
-<% @tags.each do |t| %>
-  <tr>
-    <td><%= link_to t.name, tag_path(t) %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<ul class="tags">
+  <% @tags.each do |t| %>
+    <li><%= link_to t.name, tag_path(t), :class => "badge badge-inverse" %></li>
+  <% end %>
+</ul>
