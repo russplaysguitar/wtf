@@ -13,31 +13,37 @@
 
 <% if @question.answers.length > 0 %>
   <h3>Answers</h3>
-  <ul>
+  <ul class="answers">
     <% @question.answers.each do |a| %>
       <li>
         <a id="<%= a.id %>"></a>
-        <%= a.description.html_safe %><br />
+        <%= a.description.html_safe %>
         By: <%= link_to a.user.username, user_path(a.user) %><br />
         <% if is_current_user(@question.user) %>
-          <%= link_to 'Is right?', 
+          <% if a.is_right %>
+            <% btn_txt = "Chosen Answer" %>
+            <% btn_class = "answerButton btn btn-small btn-success disabled" %>
+          <% else %>
+            <% btn_txt = "Select Answer" %>
+            <% btn_class = "answerButton btn btn-small btn-success" %>
+          <% end %>
+          <%= link_to btn_txt, 
               question_answer_path(@question, a, :answer => {:is_right => true}, :format => "json"), 
               :method => :put,
               :remote => :true, 
-              :class => "answer_is_right",
-              :right => a.is_right %><br />
-        <% else %>
-          <span class="answer_is_right" right="<%= a.is_right %>">Is right?</span>
+              :class => btn_class %>
+        <% elsif a.is_right %>
+          <span class="btn btn-success disabled">Chosen Answer</span>
         <% end %> 
       </li>
     <% end %>
   </ul>
 
   <%= javascript_tag do %>
-    $(".answer_is_right").bind("ajax:complete", function(et, e, s){
+    $(".answerButton").bind("ajax:complete", function(et, e, s){
       if(s == "success") {
-        $(".answer_is_right").attr('right', false);
-        $(this).attr('right', true);
+        $(".answerButton").text("Select Answer").removeClass("disabled");
+        $(this).text("Chosen Answer").addClass("disabled");
       }
     });
   <% end %>
