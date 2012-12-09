@@ -2,7 +2,7 @@
 
 <h1><%= @question.title %></h1>
 <p>
-  <%= @question.description %><br />
+  <%= @question.description.html_safe %><br />
   By: <%= link_to @question.user.username, user_path(@question.user) %><br />
   <% if is_current_user(@question.user) %>
     <%= link_to 'Edit', edit_question_path(@question) %>
@@ -15,7 +15,7 @@
     <% @question.answers.each do |a| %>
       <li>
         <a id="<%= a.id %>"></a>
-        <%= a.description %><br />
+        <%= a.description.html_safe %><br />
         By: <%= link_to a.user.username, user_path(a.user) %><br />
         <% if is_current_user(@question.user) %>
           <%= link_to 'Is right?', 
