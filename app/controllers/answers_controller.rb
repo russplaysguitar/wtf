@@ -78,8 +78,6 @@ class AnswersController < ApplicationController
 
     @answer = @question.answers.find(params[:id])
 
-    # TODO: write something that makes other answers not right if this one is marked as right
-
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         # make other answers wrong
@@ -91,7 +89,7 @@ class AnswersController < ApplicationController
             end
           end
         end
-        format.html { render :controller => @question, :action => "show", notice: 'Answer was successfully updated.' }
+        format.html { render :template => 'questions/show', :id => @question.id, notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
