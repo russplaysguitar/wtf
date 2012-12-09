@@ -25,7 +25,9 @@
               <li><%= link_to 'Log in', '/login' %></li><li><%= link_to 'Sign up', '/signup' %></li>
             <% else %>
               <li>
-                <!-- Hi, <%= link_to @current_user.username, user_path(@current_user) %> | -->
+                <%= link_to "Hi, " + @current_user.username, user_path(@current_user) %>
+              </li>
+              <li>
                 <%= link_to "Log out", "/logout", :id => @current_user.id, :method => :delete %></li>
             <% end %>
           </ul>
