@@ -9,3 +9,11 @@
 .answer_is_right[right="true"] {
   background-color: #71C671;
 }
+ul.tags {
+  list-style: none;
+  margin-left: 0px;
+}
+
+ul.tags li {
+  margin-bottom: 2px;
+}
