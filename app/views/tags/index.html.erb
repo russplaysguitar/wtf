@@ -5,9 +5,9 @@
     <th>Name</th>
   </tr>
 
-<% @tags.each do |tag| %>
+<% @tags.each do |t| %>
   <tr>
-    <td><%= tag.name %></td>
+    <td><%= link_to t.name, tag_path(t) %></td>
   </tr>
 <% end %>
 </table>
