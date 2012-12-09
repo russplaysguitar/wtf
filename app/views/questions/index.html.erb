@@ -1,19 +1,26 @@
-<h1>Questions</h1>
+<div class="row-fluid">
+  <div class="span8">
+    <h1>Questions</h1>
 
-<ul class="questions">
-  <% @questions.each do |question| %>
-    <li>
-      <h3><%= link_to question.title, question %></h3>
-      <% question.tags.each do |t| %>
-        <%= link_to t.name, t, :class => "badge badge-inverse" %>
+    <ul class="questions">
+      <% @questions.each do |question| %>
+        <li>
+          <h3><%= link_to question.title, question %></h3>
+          <% question.tags.each do |t| %>
+            <%= link_to t.name, t, :class => "badge badge-inverse" %>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
 
-<br />
-<% if @current_user %>
-  <%= link_to 'Ask a Question', new_question_path %>
-<% else %>
-  <%= link_to 'Log in', '/login' %> or <%= link_to 'Sign up', '/signup' %> to ask a question.
-<% end %>
+    <br />
+    <% if @current_user %>
+      <%= link_to 'Ask a Question', new_question_path %>
+    <% else %>
+      <%= link_to 'Log in', '/login' %> or <%= link_to 'Sign up', '/signup' %> to ask a question.
+    <% end %>
+  </div>
+  <div class="span2">
+    <%= render :template => 'tags/index' %>
+  </div>
+</div>

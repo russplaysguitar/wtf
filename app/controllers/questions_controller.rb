@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.order("created_at DESC")
+    @tags = Tag.order("name")
 
     respond_to do |format|
       format.html # index.html.erb
