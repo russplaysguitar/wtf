@@ -41,6 +41,24 @@
   <% end %>
 <% end %>
 
+<h3>Tags</h3>
+<ul>
+<% @question.tags.each do |tag| %>
+  <li>
+    <%= link_to tag.name, tag_path(tag) %>
+    <% if @current_user == @question.user %>
+      <%= link_to "x", question_tagging_path(@question, @question.taggings.where(:tag_id => tag.id)[0].id), :method => :delete, :confirm => "Really?" %>
+    <% end %>
+  </li>
+<% end %> 
+</ul>
+<%= form_for :tag, :url => question_taggings_path(@question) do |f| %>
+  <% if @current_user == @question.user %>
+  <%= f.text_field :name, :placeholder => "Name" %>
+    <%= f.submit "Add Tag" %>
+  <% end %>
+<% end %>
+
 <% if @current_user %>
   <%= render :template => 'answers/new' %>
 <% else %>
