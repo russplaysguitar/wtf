@@ -1,6 +1,6 @@
 class TaggingsController < ApplicationController
   def create
-    question = @current_user.questions.find_by_id(params[:question_id])
+    question = Question.find(params[:question_id])
     if question.tags.where(:name => params[:tag][:name]).empty?
       tag = Tag.find_or_create_by_name(params[:tag][:name])
       begin

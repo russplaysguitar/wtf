@@ -1,3 +1,5 @@
+<div class="row-fluid">
+  <div class="span8">
 <p id="notice"><%= notice %></p>
 
 <h1><%= @question.title %></h1>
@@ -41,11 +43,19 @@
   <% end %>
 <% end %>
 
+<% if @current_user %>
+  <%= render :template => 'answers/new' %>
+<% else %>
+  <%= link_to 'Log in', '/login' %> or <%= link_to 'Sign up', '/signup' %> to answer this question.
+<% end %>
+</div>
+
+<div class="span2">
 <h3>Tags</h3>
-<ul>
+<ul class="tags">
 <% @question.tags.each do |tag| %>
   <li>
-    <%= link_to tag.name, tag_path(tag) %>
+    <%= link_to tag.name, tag_path(tag), :class => "btn btn-inverse btn-small" %>
     <% if @current_user == @question.user %>
       <%= link_to "x", question_tagging_path(@question, @question.taggings.where(:tag_id => tag.id)[0].id), :method => :delete, :confirm => "Really?" %>
     <% end %>
@@ -53,14 +63,9 @@
 <% end %> 
 </ul>
 <%= form_for :tag, :url => question_taggings_path(@question) do |f| %>
-  <% if @current_user == @question.user %>
   <%= f.text_field :name, :placeholder => "Name" %>
-    <%= f.submit "Add Tag" %>
-  <% end %>
+  <%= f.submit "Add Tag" %>
 <% end %>
+</div>
 
-<% if @current_user %>
-  <%= render :template => 'answers/new' %>
-<% else %>
-  <%= link_to 'Log in', '/login' %> or <%= link_to 'Sign up', '/signup' %> to answer this question.
-<% end %>
+</div>
