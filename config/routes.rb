@@ -7,7 +7,7 @@ Wtf::Application.routes.draw do
 
   resources :questions do
     get 'search', :on => :collection
-    resources :answers, :except => [:index] do
+    resources :answers, :except => [:index, :show] do
       resources :comments
     end
     resources :comments
