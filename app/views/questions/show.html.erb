@@ -15,14 +15,17 @@
   <h3>Answers</h3>
   <ul class="answers">
     <% @question.answers.each do |a| %>
-      <li>
+      <% if a.is_right %>
+        <% li_class = "alert alert-success" %>
+      <% end %>
+      <li class="<%= li_class %>">
         <a id="<%= a.id %>"></a>
         <%= a.description.html_safe %>
         By: <%= link_to a.user.username, user_path(a.user) %><br />
         <% if is_current_user(@question.user) %>
           <% if a.is_right %>
             <% btn_txt = "Chosen Answer" %>
-            <% btn_class = "answerButton btn btn-small btn-success disabled" %>
+            <% btn_class = "answerButton btn btn-small btn-success disabled hidden" %>
           <% else %>
             <% btn_txt = "Select Answer" %>
             <% btn_class = "answerButton btn btn-small btn-success" %>
@@ -32,8 +35,6 @@
               :method => :put,
               :remote => :true, 
               :class => btn_class %>
-        <% elsif a.is_right %>
-          <span class="btn btn-success disabled">Chosen Answer</span>
         <% end %> 
       </li>
     <% end %>
@@ -42,8 +43,12 @@
   <%= javascript_tag do %>
     $(".answerButton").bind("ajax:complete", function(et, e, s){
       if(s == "success") {
-        $(".answerButton").text("Select Answer").removeClass("disabled");
-        $(this).text("Chosen Answer").addClass("disabled");
+        $(".answerButton").text("Select Answer").removeClass("disabled hidden");
+        $(".answerButton").show();
+        $(".answerButton").parent('li').removeClass("alert alert-success");
+
+        $(this).text("Chosen Answer").addClass("disabled").hide();
+        $(this).parent('li').addClass("alert alert-success");
       }
     });
   <% end %>
