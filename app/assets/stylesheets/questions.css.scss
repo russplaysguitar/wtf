@@ -9,6 +9,15 @@
 .answer_is_right[right="true"] {
   background-color: #71C671;
 }
+
+ul.answers {
+  list-style: none;
+}
+
+ul.answers li {
+  margin-bottom: 1em;
+}
+
 ul.tags {
   list-style: none;
   margin-left: 0px;
