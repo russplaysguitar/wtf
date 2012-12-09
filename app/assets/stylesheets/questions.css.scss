@@ -8,6 +8,7 @@ ul.questions {
 
 ul.questions li {
   border: dashed 1px gray;
+  background-color: #F6F6F6;
   padding: 2px;
   margin: 2px;
 }
@@ -23,6 +24,7 @@ ul.answers {
 ul.answers li {
   margin-bottom: 1em;
   color: black;
+  border-bottom: dashed 1px gray;
 }
 
 ul.tags {
