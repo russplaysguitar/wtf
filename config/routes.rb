@@ -2,8 +2,7 @@ Wtf::Application.routes.draw do
   resources :users, :except => [:new, 
                                 :destroy]
 
-  resources :tags, :only => [:index,
-                             :show]
+  resources :tags, :only => [:show]
 
   resources :questions do
     get 'search', :on => :collection
