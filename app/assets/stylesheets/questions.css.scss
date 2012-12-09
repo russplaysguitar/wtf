@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.answer_is_right {
-  background-color: none;
+ul.questions {
+  list-style: none; 
 }
 
-.answer_is_right[right="true"] {
-  background-color: #71C671;
+ul.questions li {
+  border: dashed 1px gray;
+  padding: 2px;
+  margin: 2px;
+}
+
+ul.questions h3 {
+  margin: 0px;
 }
 
 ul.answers {

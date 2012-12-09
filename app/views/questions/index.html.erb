@@ -1,8 +1,13 @@
 <h1>Questions</h1>
 
-<ul>
+<ul class="questions">
   <% @questions.each do |question| %>
-    <li><%= link_to question.title, question %></li>
+    <li>
+      <h3><%= link_to question.title, question %></h3>
+      <% question.tags.each do |t| %>
+        <%= link_to t.name, t, :class => "badge badge-inverse" %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
