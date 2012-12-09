@@ -36,6 +36,9 @@
               :remote => :true, 
               :class => btn_class %>
         <% end %> 
+        <% if is_current_user(a.user) %>
+          <%= link_to "Edit", edit_question_answer_path(@question, a), :class => "btn btn-warning" %>
+        <% end %>
       </li>
     <% end %>
   </ul>
