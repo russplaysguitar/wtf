@@ -1,6 +1,10 @@
 <div class="row-fluid">
   <div class="span8">
-    <h1>Questions</h1>
+    <% if params[:unanswered] %>
+      <h1>Unanswered Questions</h1>
+    <% else %>
+      <h1>All Questions</h1>
+    <% end %>
 
     <ul class="questions">
       <% @questions.each do |question| %>

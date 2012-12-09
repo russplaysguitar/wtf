@@ -2,7 +2,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.order("created_at DESC")
+    if params[:unanswered]
+      @questions = Question.includes("answers").where(answers: {question_id: nil}).order("questions.created_at DESC")
+    else
+      @questions = Question.order("created_at DESC")
+    end
     @tags = Tag.order("name")
 
     respond_to do |format|
