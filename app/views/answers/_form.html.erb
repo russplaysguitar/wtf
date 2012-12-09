@@ -14,7 +14,8 @@
 
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :class => "input-xxlarge", :rows => 6 %>
+    <%= f.text_area :description, :class => "input-xxlarge tinymce", :rows => 6 %>
+    <%= tinymce %>
   </div>
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>
