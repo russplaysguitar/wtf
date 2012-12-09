@@ -37,7 +37,7 @@
               :class => btn_class %>
         <% end %> 
         <% if is_current_user(a.user) %>
-          <%= link_to "Edit", edit_question_answer_path(@question, a), :class => "btn btn-warning" %>
+          <%= link_to "Edit", edit_question_answer_path(@question, a), :class => "btn btn-warning btn-small" %>
         <% end %>
       </li>
     <% end %>
