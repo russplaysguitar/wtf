@@ -55,7 +55,7 @@
 <ul class="tags">
 <% @question.tags.each do |tag| %>
   <li>
-    <%= link_to tag.name, tag_path(tag), :class => "btn btn-inverse btn-small" %>
+    <%= link_to tag.name, tag_path(tag), :class => "badge badge-inverse" %>
     <% if @current_user == @question.user %>
       <%= link_to "x", question_tagging_path(@question, @question.taggings.where(:tag_id => tag.id)[0].id), :method => :delete, :confirm => "Really?" %>
     <% end %>
